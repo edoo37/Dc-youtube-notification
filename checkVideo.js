@@ -6,7 +6,7 @@ const fs = require("fs");
 module.exports = (dClient) => {
   dClient.checkVideo = async () => {
     try {
-      const data = await parser.parseURL('https://www.youtube.com/feeds/videos.xml?channel_id=UCwwI9KJo470OxEcui9QO0KA');
+      const data = await parser.parseURL('https://www.youtube.com/feeds/videos.xml?channel_id=YOUR_YT_CHANNEL_ID');
 
       const rawData = fs.readFileSync(`${__dirname}/video.json`);
       const jsonData = JSON.parse(rawData);
@@ -23,8 +23,8 @@ module.exports = (dClient) => {
           }
         );
         try {
-          const guild = await dClient.guilds.fetch("863366891472158730");
-          const channel = await guild.channels.cache.get("1145730282515861524");
+          const guild = await dClient.guilds.fetch("YOUR_DC_CHANNEL_ID");
+          const channel = await guild.channels.cache.get("YOUR_DC_TEXT_CHANNEL_ID");
     
           const {title,link,id,author} = data.items[0];
 
@@ -38,8 +38,8 @@ module.exports = (dClient) => {
             },
             author: {
                 name: author,
-                iconURL: 'https://www.google.com',
-                url: 'https://www.youtube.com/'
+                iconURL: 'YOUR_ICON_URL',
+                url: 'YOUR_YT_CHANNEL_URL'
             },
             footer: {
               text: dClient.user.tag,
